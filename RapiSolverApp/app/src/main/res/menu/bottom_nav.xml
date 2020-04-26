@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/MiPerfil"
+        android:title="Mi Perfil"
+        android:icon="@drawable/ic_action_person"
+
+        ></item>
+
+    <item
+        android:id="@+id/BuscarServicio"
+        android:title="Buscar Servicio"
+        android:icon="@drawable/ic_action_buscarservicio"
+        ></item>
+
+    <item
+        android:id="@+id/BuscarProveedor"
+        android:title="Buscar Proveedor"
+        android:icon="@drawable/ic_action_buscarproveedor"
+        ></item>
+</menu>
