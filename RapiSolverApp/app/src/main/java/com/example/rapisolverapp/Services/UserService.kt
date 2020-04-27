@@ -8,5 +8,5 @@ import retrofit2.http.Query
 interface UserService {
 
     @GET("rapiusers")
-    fun getUsers(@Query("format") format: String): Call<List<User>>
+    fun getUsers(@Query("format") format: String): Call<ArrayList<User>>
 }
