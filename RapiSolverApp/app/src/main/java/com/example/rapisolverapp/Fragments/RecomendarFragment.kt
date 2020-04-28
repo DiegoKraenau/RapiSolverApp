@@ -6,14 +6,24 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import com.example.rapisolverapp.Activities.LogueoActivity
+import com.example.rapisolverapp.Cliente
+import com.example.rapisolverapp.Models.Recomendation
 import com.example.rapisolverapp.R
 import com.example.rapisolverapp.Services.RecomendationService
+import com.example.rapisolverapp.Services.ServiceService
+import kotlinx.android.synthetic.main.fragment_recomendar.*
 import kotlinx.android.synthetic.main.fragment_recomendar.view.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+
+import okhttp3.OkHttpClient
+
+
+
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -57,11 +67,46 @@ class RecomendarFragment : Fragment() {
         vista.agregarRecomendacion.setOnClickListener {
             if(puntaje!=0){
 
+                val retrofit = Retrofit.Builder()
+                    .baseUrl("https://rapisolverprueba.herokuapp.com/api/")
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build()
+
+
+                val recomendationService: RecomendationService
+
+                recomendationService=retrofit.create(RecomendationService::class.java)
+
+                var recomendation=Recomendation()
+                recomendation.usuarioId=LogueoActivity.usuarioVisitante.usuarioId
+                recomendation.supplierId=LogueoActivity.OneServiceDetail.supplierId
+                recomendation.note=txtComentario.text.toString()
+                recomendation.mark=puntaje
+
+
+                val request=recomendationService.postRecommendation(recomendation)
+
+                request.enqueue(object : Callback<Any>{
+                    override fun onFailure(call: Call<Any>, t: Throwable) {
+                        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                        Toast.makeText(context,"Tiempo de espera insuficiente.",Toast.LENGTH_SHORT).show()
+                    }
+
+                    override fun onResponse(call: Call<Any>, response: Response<Any>) {
+                        if(response.isSuccessful){
+                        txtComentario.text.clear()
+                        Toast.makeText(context,"Se agregó exitosamente.",Toast.LENGTH_SHORT).show()
+                        }
+                    }
+
+                })
+
 
             }else{
                 Toast.makeText(context,"Debe ingresar el puntaje",Toast.LENGTH_SHORT).show()
             }
         }
+
 
 
 
