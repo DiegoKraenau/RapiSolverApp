@@ -7,6 +7,7 @@ import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import com.example.rapisolverapp.Fragments.BuscarServicioFragment
+import com.example.rapisolverapp.Models.Recomendation
 import com.example.rapisolverapp.Models.Service
 import com.example.rapisolverapp.Models.ServiceDetail
 import com.example.rapisolverapp.Models.User
@@ -27,6 +28,7 @@ class LogueoActivity : AppCompatActivity() {
         var listaServiceDeatil=ArrayList<ServiceDetail>()
         lateinit var OneServiceDetail:ServiceDetail
         lateinit var ServiciosProvedores:ArrayList<Service>
+        lateinit var RecomendationsSupplier:ArrayList<Recomendation>
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

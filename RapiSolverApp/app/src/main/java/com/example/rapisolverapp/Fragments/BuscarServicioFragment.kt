@@ -48,9 +48,10 @@ class BuscarServicioFragment : Fragment(),OnServiceDetailClickListener {
         val someFragment = ServiceDetailDeterminado()
 
         val bundle=Bundle()
-        LogueoActivity.OneServiceDetail=serviceDeatils
+
 
         //AGREGANDO LISTA DE SERVICIOS DE ESE PROVEDOR
+        LogueoActivity.OneServiceDetail=serviceDeatils
         val retrofit = Retrofit.Builder()
             .baseUrl("https://rapisolverprueba.herokuapp.com/api/")
             .addConverterFactory(GsonConverterFactory.create())

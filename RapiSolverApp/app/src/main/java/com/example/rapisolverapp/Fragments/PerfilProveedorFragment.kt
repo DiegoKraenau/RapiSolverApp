@@ -12,11 +12,14 @@ import com.example.rapisolverapp.Activities.LogueoActivity
 import com.example.rapisolverapp.Adapters.OnServiceDetailClickListener
 import com.example.rapisolverapp.Adapters.ServiceAdapter
 import com.example.rapisolverapp.Adapters.ServiceDetailAdapter
+import com.example.rapisolverapp.Models.Recomendation
 import com.example.rapisolverapp.Models.Service
 import com.example.rapisolverapp.Models.ServiceDetail
 import com.example.rapisolverapp.Models.User
 import com.example.rapisolverapp.R
+import com.example.rapisolverapp.Services.RecomendationService
 import com.example.rapisolverapp.Services.ServiceService
+import kotlinx.android.synthetic.main.fragment_perfil_proveedor.*
 import kotlinx.android.synthetic.main.fragment_perfil_proveedor.view.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -45,48 +48,64 @@ class PerfilProveedorFragment : Fragment(), OnServiceDetailClickListener {
         var vista:View
         vista=inflater.inflate(R.layout.fragment_perfil_proveedor, container, false)
 
-        /*
-        val retrofit = Retrofit.Builder()
-            .baseUrl("https://rapisolverprueba.herokuapp.com/api/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
+
+        vista.btnRecomendaciones.setOnClickListener {
+            //Toast.makeText(context,"AEA",Toast.LENGTH_SHORT).show()
+            val someFragment = RecomendacionesProveedorFragment() //INSTANCIA DEL OTRO FRAGMENT
+
+            val retrofit = Retrofit.Builder()
+                .baseUrl("https://rapisolverprueba.herokuapp.com/api/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
+
+            val recomendationService: RecomendationService
+
+            recomendationService=retrofit.create(RecomendationService::class.java)
+
+            val request=recomendationService.getRecomendationsBySupplierId(LogueoActivity.OneServiceDetail.supplierId)
+
+            request.enqueue(object :Callback<ArrayList<Recomendation>>{
+                override fun onFailure(call: Call<ArrayList<Recomendation>>, t: Throwable) {
+                    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                }
+
+                override fun onResponse(
+                    call: Call<ArrayList<Recomendation>>,
+                    response: Response<ArrayList<Recomendation>>
+                ) {
+                    if(response.isSuccessful){
+                        LogueoActivity.RecomendationsSupplier=response.body()!!
+
+                        //CAMBIO DE FRAGMENT
 
 
-         */
+                        val bundle=Bundle()
+
+                        val transaction = fragmentManager!!.beginTransaction()
+                        transaction.replace(R.id.frame_layout,someFragment)
+                        transaction.addToBackStack(null)
+                        transaction.commit()
+                    }
+                }
+
+            })
+
+
+
+
+        }
+
         vista.lblNombreProveedor2.text = LogueoActivity.OneServiceDetail.name + " " + LogueoActivity.OneServiceDetail.lastName
         vista.lblC.text = LogueoActivity.OneServiceDetail.email
         vista.lblT.text = LogueoActivity.OneServiceDetail.phone
 
-        //val serviceService: ServiceService
-
-        //serviceService=retrofit.create(ServiceService::class.java)
-
-        //val request=serviceService.getServiciosByUserId(LogueoActivity.OneServiceDetail.usuarioId)
-        /*
-        request.enqueue(object : Callback<ArrayList<Service>>{
-            override fun onFailure(call: Call<ArrayList<Service>>, t: Throwable) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-            }
-
-            override fun onResponse(
-                call: Call<ArrayList<Service>>,
-                response: Response<ArrayList<Service>>
-            ) {
-                if (response.isSuccessful) {
-                    serviciosProveedor=response.body()!!
-                    //Toast.makeText(context, serviciosProveedor.size.toString(),Toast.LENGTH_SHORT).show()
-
-                }
-            }
-
-        })
-
-         */
 
 
-            var serviceAdapter = ServiceAdapter(LogueoActivity.ServiciosProvedores, this)
-            vista.rvServiciosProvedor.adapter = serviceAdapter
-            vista.rvServiciosProvedor.layoutManager = LinearLayoutManager(this.context)
+
+        var serviceAdapter = ServiceAdapter(LogueoActivity.ServiciosProvedores, this)
+        vista.rvServiciosProvedor.adapter = serviceAdapter
+        vista.rvServiciosProvedor.layoutManager = LinearLayoutManager(this.context)
+
 
 
 
