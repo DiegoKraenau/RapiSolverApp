@@ -41,6 +41,15 @@ class ServiceDetailDeterminado : Fragment() {
             transaction.addToBackStack(null)
             transaction.commit()
         }
+
+        vista.btnCalificar.setOnClickListener {
+            val someFragment = RecomendarFragment()
+            val bundle=Bundle()
+            val transaction = fragmentManager!!.beginTransaction()
+            transaction.replace(R.id.frame_layout,someFragment)
+            transaction.addToBackStack(null)
+            transaction.commit()
+        }
         return vista
     }
 
