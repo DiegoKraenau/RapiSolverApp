@@ -29,6 +29,7 @@ class LogueoActivity : AppCompatActivity() {
         lateinit var OneServiceDetail:ServiceDetail
         lateinit var ServiciosProvedores:ArrayList<Service>
         lateinit var RecomendationsSupplier:ArrayList<Recomendation>
+        lateinit var usuarioVisitante:User
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -108,6 +109,7 @@ class LogueoActivity : AppCompatActivity() {
         for (user in listaUsuarios!!){
             if(user.userName==inputCorreo.text.toString() && user.userPassword==inputContraseña.text.toString() ){
                 PantallaPrincipal.userId=user.usuarioId
+                usuarioVisitante=user
                 con=con+1
 
             }
