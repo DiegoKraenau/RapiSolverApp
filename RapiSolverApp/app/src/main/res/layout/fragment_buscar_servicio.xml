@@ -8,8 +8,8 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvServicios"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="409dp"
+        android:layout_height="597dp"
         android:layout_below="@+id/lblBusqueda"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
@@ -17,8 +17,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginStart="2dp"
         android:layout_marginTop="50dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginBottom="68dp" />
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="0dp" />
 
     <EditText
         android:id="@+id/lblBusqueda"
@@ -47,8 +47,25 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="340dp"
-        android:text="@string/NoEncontrado" />
+        android:layout_marginTop="593dp"
+        android:layout_marginEnd="56dp"
+        android:text="@string/NoEncontrado"
+        android:textSize="25dp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/imagen404"
+        android:layout_width="240dp"
+        android:layout_height="428dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="92dp"
+        android:layout_marginTop="140dp"
+        android:layout_marginEnd="79dp"
+        android:src="@drawable/imagen404" />
 
 </RelativeLayout>
