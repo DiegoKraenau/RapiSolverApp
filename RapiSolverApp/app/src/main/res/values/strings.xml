@@ -21,4 +21,11 @@
     <string name="Categoria">Categoria :</string>
     <string name="Costo">Costo :</string>
     <string name="NoEncontrado">No se encontro servicios</string>
+    <string name="Descripcion">Descripcion :</string>
+    <string name="Calificacion">Calificación :</string>
+    <string name="Contactar">Contactar</string>
+    <string name="Calificar">Calificar</string>
+    <string name="Vermas">Ver más ...</string>
+    <string name="Telefono">Telefono :</string>
+    <string name="Servicios">Servicios :</string>
 </resources>

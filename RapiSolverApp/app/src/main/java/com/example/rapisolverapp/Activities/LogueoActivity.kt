@@ -4,8 +4,10 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import com.example.rapisolverapp.Fragments.BuscarServicioFragment
+import com.example.rapisolverapp.Models.Service
 import com.example.rapisolverapp.Models.ServiceDetail
 import com.example.rapisolverapp.Models.User
 import com.example.rapisolverapp.R
@@ -23,6 +25,8 @@ class LogueoActivity : AppCompatActivity() {
     companion object {
         var listaUsuarios= ArrayList<User>()
         var listaServiceDeatil=ArrayList<ServiceDetail>()
+        lateinit var OneServiceDetail:ServiceDetail
+        lateinit var ServiciosProvedores:ArrayList<Service>
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
