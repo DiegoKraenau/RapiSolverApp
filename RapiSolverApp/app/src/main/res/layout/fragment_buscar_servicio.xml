@@ -68,4 +68,14 @@
         android:layout_marginEnd="79dp"
         android:src="@drawable/imagen404" />
 
+    <Button
+        android:id="@+id/add_Service"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="0dp"
+        android:background="@drawable/add_service" />
+
 </RelativeLayout>
