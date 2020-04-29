@@ -13,5 +13,5 @@ interface ServiceDetailService {
 
     @POST("servicedetails")
     @Headers( "Content-Type: application/json;charset=UTF-8")
-    fun postRecommendation(@Body servicedetail: ServiceDetail):Call<Any>
+    fun postService(@Body servicedetail: ServiceDetail):Call<Any>
 }
