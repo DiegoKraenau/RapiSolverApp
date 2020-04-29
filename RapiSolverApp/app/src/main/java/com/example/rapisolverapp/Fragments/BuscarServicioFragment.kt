@@ -69,6 +69,8 @@ class BuscarServicioFragment : Fragment(),OnServiceDetailClickListener {
                 TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
             }
 
+
+
             override fun onResponse(
                 call: Call<ArrayList<Service>>,
                 response: Response<ArrayList<Service>>
@@ -90,11 +92,12 @@ class BuscarServicioFragment : Fragment(),OnServiceDetailClickListener {
         })
 
 
-
-
-
-
     }
+
+
+
+
+
 
     var serviceDetailAdapter = ServiceDetailAdapter(LogueoActivity.listaServiceDeatil,this)
 
@@ -143,6 +146,25 @@ class BuscarServicioFragment : Fragment(),OnServiceDetailClickListener {
                 vista.rvServicios.layoutManager = LinearLayoutManager(this.context)
             }
         }
+
+
+
+        vista.btn_add_Service.setOnClickListener {
+
+
+
+            val someFragment = AgregarServicioFragment()
+
+            val transaction = fragmentManager!!.beginTransaction()
+            transaction.replace(R.id.frame_layout,someFragment)
+            transaction.addToBackStack(null)
+            transaction.commit()
+
+
+        }
+
+
+
 
         return vista
 

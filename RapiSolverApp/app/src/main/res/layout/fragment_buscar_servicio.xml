@@ -69,9 +69,9 @@
         android:src="@drawable/imagen404" />
 
     <Button
-        android:id="@+id/add_Service"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:id="@+id/btn_add_Service"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="1dp"
