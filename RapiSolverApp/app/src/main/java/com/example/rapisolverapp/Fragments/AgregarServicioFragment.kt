@@ -35,6 +35,11 @@ class AgregarServicioFragment : Fragment() {
         // Inflate the layout for this fragment
         vista = inflater.inflate(R.layout.fragment_agregar_servicio, container, false)
 
+
+
+
+
+
         vista.agregarServicio.setOnClickListener {
             val retrofit = Retrofit.Builder()
                 .baseUrl("https://rapisolverprueba.herokuapp.com/api/")
