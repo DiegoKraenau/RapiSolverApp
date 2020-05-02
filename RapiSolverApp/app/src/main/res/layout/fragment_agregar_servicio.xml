@@ -95,4 +95,13 @@
         app:layout_constraintStart_toEndOf="@+id/textView6"
         app:layout_constraintTop_toBottomOf="@+id/txt_descripservicio" />
 
+    <Spinner
+        android:id="@+id/spinnerSeCategory"
+        android:layout_width="219dp"
+        android:layout_height="33dp"
+        android:layout_marginStart="136dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_nombreservicio" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

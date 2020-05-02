@@ -29,6 +29,7 @@ class LogueoActivity : AppCompatActivity() {
         lateinit var RecomendationsSupplier:ArrayList<Recomendation>
         lateinit var usuarioVisitante:User
         lateinit var categoryList: ArrayList<ServiceCategorie>
+
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,6 +43,8 @@ class LogueoActivity : AppCompatActivity() {
 
         }
     }
+
+
 
     private fun cargarCategorias() {
         val retrofit = Retrofit.Builder()
@@ -170,4 +173,7 @@ class LogueoActivity : AppCompatActivity() {
 
 
     }
+
+
+
 }

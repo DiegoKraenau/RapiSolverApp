@@ -5,8 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import com.example.rapisolverapp.Activities.LogueoActivity
+import com.example.rapisolverapp.Activities.LogueoActivity.Companion.categoryList
+import com.example.rapisolverapp.Models.ServiceCategorie
 import com.example.rapisolverapp.Models.ServiceDetail
 import com.example.rapisolverapp.R
 import com.example.rapisolverapp.Services.ServiceDetailService
@@ -20,23 +23,33 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.*
+import kotlin.collections.ArrayList
 
 /**
  * A simple [Fragment] subclass.
  */
 class AgregarServicioFragment : Fragment() {
 
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
+
     ): View? {
+
+
 
         var vista:View
         // Inflate the layout for this fragment
         vista = inflater.inflate(R.layout.fragment_agregar_servicio, container, false)
 
+        var categoryListNames= ArrayList<String>()
+        for (item in categoryList){
+            categoryListNames.add(item.categoryName)
+        }
 
-
+        vista.spinnerSeCategory.adapter = ArrayAdapter<String>(vista.context,android.R.layout.simple_dropdown_item_1line,categoryListNames)
 
 
 
@@ -52,7 +65,7 @@ class AgregarServicioFragment : Fragment() {
             serviceDetailService=retrofit.create(ServiceDetailService::class.java)
             var serviceDetail = ServiceDetail()
             serviceDetail.serviceName = vista.txt_nombreservicio.text.toString()
-            serviceDetail.categoryName = "Electricidad"
+            serviceDetail.categoryName = vista.spinnerSeCategory.selectedItem.toString()
             serviceDetail.description = vista.txt_descripservicio.text.toString()
             serviceDetail.cost = vista.txt_costoservicio.text.toString()
 
