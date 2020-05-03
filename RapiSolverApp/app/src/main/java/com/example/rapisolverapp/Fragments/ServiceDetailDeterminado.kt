@@ -10,6 +10,7 @@ import com.example.rapisolverapp.Activities.LogueoActivity
 import com.example.rapisolverapp.Models.ServiceDetail
 import com.example.rapisolverapp.Models.User
 import com.example.rapisolverapp.R
+import kotlinx.android.synthetic.main.fragment_buscar_servicio.view.*
 import kotlinx.android.synthetic.main.fragment_service_detail_determinado.*
 import kotlinx.android.synthetic.main.fragment_service_detail_determinado.view.*
 
@@ -50,6 +51,28 @@ class ServiceDetailDeterminado : Fragment() {
             transaction.addToBackStack(null)
             transaction.commit()
         }
+
+
+        vista.btnContactar.setOnClickListener {
+
+
+
+            val someFragment = ReservarServicioFragment()
+
+            val transaction = fragmentManager!!.beginTransaction()
+            transaction.replace(R.id.frame_layout,someFragment)
+            transaction.addToBackStack(null)
+            transaction.commit()
+
+
+        }
+
+
+
+
+
+
+
         return vista
     }
 
