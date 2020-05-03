@@ -69,7 +69,7 @@ class AgregarServicioFragment : Fragment() {
             serviceDetail.description = vista.txt_descripservicio.text.toString()
             serviceDetail.cost = vista.txt_costoservicio.text.toString()
 
-            serviceDetail.supplierId = 1
+            serviceDetail.supplierId = LogueoActivity.suppliervisitante[0].supplierId
 
 
             val request=serviceDetailService.postService(serviceDetail)

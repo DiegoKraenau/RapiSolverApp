@@ -2,6 +2,7 @@ package com.example.rapisolverapp.Activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.fragment.app.FragmentTransaction
 import com.example.rapisolverapp.Fragments.BuscarProveedorFragment
 import com.example.rapisolverapp.Fragments.BuscarServicioFragment
@@ -64,5 +65,11 @@ class PantallaPrincipal : AppCompatActivity() {
             true
         }
 
+        Toask()
+
+    }
+
+    private fun Toask() {
+        Toast.makeText(this@PantallaPrincipal, LogueoActivity.toask,Toast.LENGTH_SHORT).show()
     }
 }

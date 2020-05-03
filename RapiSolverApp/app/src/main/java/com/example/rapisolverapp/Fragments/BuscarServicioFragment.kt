@@ -13,6 +13,7 @@ import android.widget.Toast
 import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.rapisolverapp.Activities.LogueoActivity
+import com.example.rapisolverapp.Activities.LogueoActivity.Companion.usuarioVisitante
 import com.example.rapisolverapp.Adapters.OnServiceDetailClickListener
 import com.example.rapisolverapp.Adapters.ServiceDetailAdapter
 import com.example.rapisolverapp.Models.Service
@@ -155,11 +156,17 @@ class BuscarServicioFragment : Fragment(),OnServiceDetailClickListener {
 
             val someFragment = AgregarServicioFragment()
 
-            val transaction = fragmentManager!!.beginTransaction()
-            transaction.replace(R.id.frame_layout,someFragment)
-            transaction.addToBackStack(null)
-            transaction.commit()
+            if (usuarioVisitante.rolId == 2) {
 
+
+                val transaction = fragmentManager!!.beginTransaction()
+                transaction.replace(R.id.frame_layout, someFragment)
+                transaction.addToBackStack(null)
+                transaction.commit()
+            }
+            else{
+                Toast.makeText(context, "Compre una suscripción",Toast.LENGTH_SHORT).show()
+            }
 
         }
 
