@@ -1,5 +1,6 @@
 package com.example.rapisolverapp.Activities
 
+import android.app.PendingIntent.getActivity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -9,9 +10,7 @@ import android.widget.Toast
 import com.example.rapisolverapp.Fragments.BuscarServicioFragment
 import com.example.rapisolverapp.Models.*
 import com.example.rapisolverapp.R
-import com.example.rapisolverapp.Services.ServiceCategorieService
-import com.example.rapisolverapp.Services.ServiceDetailService
-import com.example.rapisolverapp.Services.UserService
+import com.example.rapisolverapp.Services.*
 import kotlinx.android.synthetic.main.activity_logueo.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -24,10 +23,12 @@ class LogueoActivity : AppCompatActivity() {
     companion object {
         var listaUsuarios= ArrayList<User>()
         var listaServiceDeatil=ArrayList<ServiceDetail>()
+        var toask = ""
         lateinit var OneServiceDetail:ServiceDetail
         lateinit var ServiciosProvedores:ArrayList<Service>
         lateinit var RecomendationsSupplier:ArrayList<Recomendation>
         lateinit var usuarioVisitante:User
+        var suppliervisitante = ArrayList<Supplier>()
         lateinit var categoryList: ArrayList<ServiceCategorie>
 
     }
@@ -40,10 +41,41 @@ class LogueoActivity : AppCompatActivity() {
         cargarCategorias()
         btnIngresar.setOnClickListener {
             loguear()
-
         }
     }
 
+    private fun cargarSupplierVisitante() {
+        val retrofit = Retrofit.Builder()
+            .baseUrl("https://rapisolverprueba.herokuapp.com/api/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+
+        val supplierService: SupplierService
+
+        supplierService=retrofit.create(SupplierService::class.java)
+
+        val request=supplierService.getSupplierbyUserId(usuarioVisitante.usuarioId)
+
+        request.enqueue(object :Callback<ArrayList<Supplier>>{
+            override fun onFailure(call: Call<ArrayList<Supplier>>, t: Throwable) {
+                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            }
+
+            override fun onResponse(
+                call: Call<ArrayList<Supplier>>,
+                response: Response<ArrayList<Supplier>>
+            ) {
+                if (response.isSuccessful){
+                    suppliervisitante = response.body()!!
+                    //toask = suppliervisitante[0].supplierId.toString()
+                }
+                //toask = response.toString()
+            }
+
+        })
+
+    }
 
 
     private fun cargarCategorias() {
@@ -154,8 +186,9 @@ class LogueoActivity : AppCompatActivity() {
             }
         }
 
-
-
+        if (usuarioVisitante.rolId == 2) {
+            cargarSupplierVisitante()
+        }
 
 
         //Toast.makeText(this@LogueoActivity, listaUsuarios!!.size.toString(),Toast.LENGTH_SHORT).show()
