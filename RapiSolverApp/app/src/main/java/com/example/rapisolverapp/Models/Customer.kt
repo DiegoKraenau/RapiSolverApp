@@ -7,7 +7,7 @@ class Customer (
     var customerId: Int,
     @SerializedName("name")
     var name: String,
-    @SerializedName("lastname")
+    @SerializedName("lastName")
     var lastname: String,
     @SerializedName("email")
     var email: String,

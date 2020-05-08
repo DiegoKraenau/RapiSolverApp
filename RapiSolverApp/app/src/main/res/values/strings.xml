@@ -28,4 +28,14 @@
     <string name="Vermas">Ver más ...</string>
     <string name="Telefono">Telefono :</string>
     <string name="Servicios">Servicios :</string>
+    <string name="nombreUsuario">Nombre</string>
+    <string name="img_user_description">Avatar del usuario</string>
+    <string name="ubicacion_usuario">Ubicacion</string>
+    <string name="usuario_telefono">Telefono</string>
+    <string name="usuario_correo">Correo</string>
+    <string name="btn_editar_perfil">Editar</string>
+    <string name="lbl_nombres">Nombres</string>
+    <string name="lbl_ubicacion">Ubicacion</string>
+    <string name="lbl_telefono">Telefono:</string>
+    <string name="lbl_correo">Correo:</string>
 </resources>

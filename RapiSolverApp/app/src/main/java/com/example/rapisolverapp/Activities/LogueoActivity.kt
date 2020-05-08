@@ -30,7 +30,7 @@ class LogueoActivity : AppCompatActivity() {
         lateinit var usuarioVisitante:User
         var suppliervisitante = ArrayList<Supplier>()
         lateinit var categoryList: ArrayList<ServiceCategorie>
-
+        var custumervisitante = ArrayList<Customer>()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -188,12 +188,14 @@ class LogueoActivity : AppCompatActivity() {
 
         if (usuarioVisitante.rolId == 2) {
             cargarSupplierVisitante()
+        }else if(usuarioVisitante.rolId == 1){
+            cargarCustumerVisitante()
         }
 
 
         //Toast.makeText(this@LogueoActivity, listaUsuarios!!.size.toString(),Toast.LENGTH_SHORT).show()
 
-        if(con==1){
+        if(con==1 && custumervisitante.size > 0 || suppliervisitante.size > 0){
 
             val intent = Intent(this@LogueoActivity,PantallaPrincipal::class.java)
             startActivity(intent)
@@ -207,6 +209,38 @@ class LogueoActivity : AppCompatActivity() {
 
     }
 
+    private fun cargarCustumerVisitante() {
 
+        val retrofit = Retrofit.Builder()
+            .baseUrl("https://rapisolverprueba.herokuapp.com/api/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+
+        val customerService: CustomerService
+
+        customerService=retrofit.create(CustomerService::class.java)
+
+        val request=customerService.getCustomerbyUserId(usuarioVisitante.usuarioId)
+
+        request.enqueue(object :Callback<ArrayList<Customer>>{
+            override fun onFailure(call: Call<ArrayList<Customer>>, t: Throwable) {
+                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            }
+
+            override fun onResponse(
+                call: Call<ArrayList<Customer>>,
+                response: Response<ArrayList<Customer>>
+            ) {
+                if (response.isSuccessful){
+                    custumervisitante = response.body()!!
+                    //Toast.makeText(this@LogueoActivity, custumervisitante.size.toString(), Toast.LENGTH_SHORT).show()
+                }
+                //toask = response.toString()
+            }
+
+        })
+
+    }
 
 }

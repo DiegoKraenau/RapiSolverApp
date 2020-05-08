@@ -30,28 +30,22 @@ import kotlin.collections.ArrayList
  */
 class AgregarServicioFragment : Fragment() {
 
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-
-    ): View? {
-
-
-
-        var vista:View
+        val vista: View
         // Inflate the layout for this fragment
         vista = inflater.inflate(R.layout.fragment_agregar_servicio, container, false)
 
-        var categoryListNames= ArrayList<String>()
-        for (item in categoryList){
+        var categoryListNames = ArrayList<String>()
+        for (item in categoryList) {
             categoryListNames.add(item.categoryName)
         }
 
-        vista.spinnerSeCategory.adapter = ArrayAdapter<String>(vista.context,android.R.layout.simple_dropdown_item_1line,categoryListNames)
-
-
+        vista.spinnerSeCategory.adapter = ArrayAdapter<String>(
+            vista.context,
+            android.R.layout.simple_dropdown_item_1line,
+            categoryListNames
+        )
 
         vista.agregarServicio.setOnClickListener {
             val retrofit = Retrofit.Builder()
@@ -59,20 +53,17 @@ class AgregarServicioFragment : Fragment() {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
 
-
             val serviceDetailService: ServiceDetailService
 
-            serviceDetailService=retrofit.create(ServiceDetailService::class.java)
+            serviceDetailService = retrofit.create(ServiceDetailService::class.java)
             var serviceDetail = ServiceDetail()
             serviceDetail.serviceName = vista.txt_nombreservicio.text.toString()
             serviceDetail.categoryName = vista.spinnerSeCategory.selectedItem.toString()
             serviceDetail.description = vista.txt_descripservicio.text.toString()
             serviceDetail.cost = vista.txt_costoservicio.text.toString()
-
             serviceDetail.supplierId = LogueoActivity.suppliervisitante[0].supplierId
 
-
-            val request=serviceDetailService.postService(serviceDetail)
+            val request = serviceDetailService.postService(serviceDetail)
 
             request.enqueue(object : Callback<Any> {
                 override fun onFailure(call: Call<Any>, t: Throwable) {
@@ -80,20 +71,15 @@ class AgregarServicioFragment : Fragment() {
                 }
 
                 override fun onResponse(call: Call<Any>, response: Response<Any>) {
-                    if (response.isSuccessful){
-                        Toast.makeText(context,"Se agregó exitosamente.",Toast.LENGTH_SHORT).show()
+                    if (response.isSuccessful) {
+                        Toast.makeText(context, "Se agregó exitosamente.", Toast.LENGTH_SHORT)
+                            .show()
                     }
                 }
-
-
             })
-
         }
-
-
         return vista
     }
-
 
 
 }
