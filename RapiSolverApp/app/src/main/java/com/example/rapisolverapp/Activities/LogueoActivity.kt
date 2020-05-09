@@ -102,7 +102,7 @@ class LogueoActivity : AppCompatActivity() {
                 if (response.isSuccessful)
                 {
                     categoryList = response.body()!!
-                    Toast.makeText(this@LogueoActivity, categoryList.size.toString(),Toast.LENGTH_SHORT).show()
+                    //Toast.makeText(this@LogueoActivity, categoryList.size.toString(),Toast.LENGTH_SHORT).show()
                 }
 
                 //Toast.makeText(this@LogueoActivity, response.toString(),Toast.LENGTH_SHORT).show()

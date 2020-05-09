@@ -22,50 +22,47 @@
 
     <TextView
         android:id="@+id/tvNombreUsuario"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="54dp"
-        android:layout_marginEnd="8dp"
+        android:layout_width="186dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="52dp"
         android:text="@string/nombreUsuario"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/lblNombres"
         app:layout_constraintTop_toBottomOf="@+id/imgViewUsuario" />
 
     <TextView
         android:id="@+id/tvUbicacion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="152dp"
         android:text="@string/ubicacion_usuario"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.811"
+        app:layout_constraintStart_toEndOf="@+id/lblUbicacion"
         app:layout_constraintTop_toBottomOf="@+id/tvNombreUsuario" />
 
     <TextView
         android:id="@+id/tvTelefono"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="24dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="156dp"
         android:text="@string/usuario_telefono"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.909"
+        app:layout_constraintStart_toEndOf="@+id/lblTelefono"
         app:layout_constraintTop_toBottomOf="@+id/tvUbicacion" />
 
     <TextView
         android:id="@+id/tvCorreo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_width="195dp"
+        android:layout_height="22dp"
         android:layout_marginTop="24dp"
-        android:layout_marginEnd="8dp"
         android:text="@string/usuario_correo"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.512"
+        app:layout_constraintStart_toEndOf="@+id/lblCorreo"
         app:layout_constraintTop_toBottomOf="@+id/tvTelefono" />
 
     <Button
@@ -85,32 +82,19 @@
         android:id="@+id/lblNombres"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="256dp"
         android:text="@string/lbl_nombres"
-        app:layout_constraintEnd_toStartOf="@+id/tvNombreUsuario"
-        app:layout_constraintHorizontal_bias="0.677"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/lblUbicacion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="@string/lbl_ubicacion"
-        app:layout_constraintEnd_toStartOf="@+id/tvUbicacion"
-        app:layout_constraintHorizontal_bias="0.738"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lblNombres" />
 
     <TextView
         android:id="@+id/lblTelefono"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
         android:text="@string/lbl_telefono"
-        app:layout_constraintEnd_toStartOf="@+id/tvTelefono"
-        app:layout_constraintHorizontal_bias="0.694"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lblUbicacion" />
 
@@ -118,11 +102,20 @@
         android:id="@+id/lblCorreo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
         android:text="@string/lbl_correo"
-        app:layout_constraintEnd_toStartOf="@+id/tvCorreo"
-        app:layout_constraintHorizontal_bias="0.695"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lblTelefono" />
+
+    <TextView
+        android:id="@+id/lblUbicacion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/lbl_ubicacion"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lblNombres" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
